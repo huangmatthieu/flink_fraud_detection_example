@@ -16,14 +16,16 @@
 src/
 ├── main/
 │   ├── scala/
-│   │   └── io.github.flinkexample.frauddetection/ 
+│   │   └── io/github/flinkexample/frauddetection/ 
 │   │       ├── model
 │   │       │   ├── Alert.scala
 │   │       │   └── Transaction.scala
 │   │       ├── sink
 │   │       │   └── KafkaSinkUtils.scala
+│   │       ├── source
+│   │       │   └── KafkaSourceUtils.scala
 │   │       ├── transformations
-│   │       │    └── FrandDetection.scala
+│   │       │   └── FrandDetection.scala
 │   │       └── FraudDetectionMain.scala
 ├── pom.xml
 └── README.md  
@@ -49,6 +51,8 @@ We detect suspicious activity when:
 
 > A user performs **2 transactions > 1000€ within 1 minute**
 
+>A user performs **transactions that occur too far in a short time window**
+
 This is implemented using **stateful stream processing**, not batch.
 
 ---
@@ -57,4 +61,22 @@ This is implemented using **stateful stream processing**, not batch.
 
 ```
 Transaction Stream -> keyBy(userId) -> Stateful Fraud Detection -> Alerts -> (Console/Kafka)
+```
+
+## Kafka Setup
+We can use the following commands to create the new topics called transactions and fraud-alerts:
+```
+# Create transaction topic
+kafka-topics.sh --create \
+    --topic transactions \
+    --bootstrap-server localhost:9092 \
+    --partitions 1 \
+    --replication-factor 1
+
+# Create alerts topic
+kafka-topics.sh --create \
+    --topic fraud-alerts \
+    --bootstrap-server localhost:9092 \
+    --partitions 1 \
+    --replication-factor 1
 ```

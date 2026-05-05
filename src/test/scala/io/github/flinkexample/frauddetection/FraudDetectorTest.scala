@@ -27,12 +27,12 @@ class FraudDetectorTest {
     harness.open()
 
     harness.processElement(
-      Transaction("user1", 1200, 1000L),
+      Transaction("user1", 1200, 1000L, 2.333333, 48.866667),
       1000L
     )
 
     harness.processElement(
-      Transaction("user1", 1300, 50000L),
+      Transaction("user1", 1300, 50000L, 2.333333, 48.866667),
       50000L
     )
 
