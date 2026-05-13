@@ -1,4 +1,4 @@
-package io.github.flinkexample.frauddetection.source
+package io.github.flinkexample.io.source
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.connector.kafka.source.KafkaSource
@@ -11,6 +11,9 @@ object KafkaSourceUtils {
       .setBootstrapServers(bootstrapServer)
       .setTopics(topic)
       .setGroupId(groupId)
+      //.setProperty("security.protocol","SASL_SSL")
+      //.setProperty("ssl.truststore.location", "/etc/kafka/conf/truststore.jks")
+      //.setProperty("ssl.truststore.password", "bigdataflink")
       .setStartingOffsets(OffsetsInitializer.latest())
       .setValueOnlyDeserializer(new SimpleStringSchema())
       .build()

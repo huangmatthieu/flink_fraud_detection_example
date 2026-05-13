@@ -1,4 +1,4 @@
-package io.github.flinkexample.frauddetection.sink
+package io.github.flinkexample.io.sink
 
 import org.apache.flink.connector.kafka.sink.{KafkaRecordSerializationSchema, KafkaSink}
 import org.apache.flink.api.common.serialization.SimpleStringSchema
@@ -10,6 +10,9 @@ object KafkaSinkUtils {
     KafkaSink
       .builder[String]()
       .setBootstrapServers(bootstrapServer)
+      //.setProperty("security.protocol", "SASL_SSL")
+      //.setProperty("ssl.truststore.location", "/etc/kafka/conf/truststore.jks")
+      //.setProperty("ssl.truststore.password", "bigdataflink")
       .setRecordSerializer(
         KafkaRecordSerializationSchema.builder()
           .setTopic(topic)

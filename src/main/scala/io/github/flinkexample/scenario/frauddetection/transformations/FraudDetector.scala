@@ -1,6 +1,6 @@
-package io.github.flinkexample.frauddetection.transformations
+package io.github.flinkexample.scenario.frauddetection.transformations
 
-import io.github.flinkexample.frauddetection.model.{Alert, Transaction}
+import io.github.flinkexample.scenario.frauddetection.model.{Alert, Transaction}
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction
 import org.apache.flink.util.Collector
 import org.apache.flink.api.common.state.{ValueState, ValueStateDescriptor}
