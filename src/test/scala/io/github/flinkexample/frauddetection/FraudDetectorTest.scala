@@ -1,12 +1,12 @@
 package io.github.flinkexample.frauddetection
 
-import io.github.flinkexample.frauddetection.model.{Alert, Transaction}
+import io.github.flinkexample.scenario.frauddetection.transformations.FraudDetector
+import io.github.flinkexample.scenario.frauddetection.model.{Alert, Transaction}
 import org.apache.flink.streaming.util.KeyedOneInputStreamOperatorTestHarness
 import org.apache.flink.streaming.api.operators.KeyedProcessOperator
 import org.apache.flink.streaming.runtime.streamrecord.StreamRecord
 import org.junit.Test
 import org.junit.Assert._
-import io.github.flinkexample.frauddetection.transformations.FraudDetector
 
 class FraudDetectorTest {
 

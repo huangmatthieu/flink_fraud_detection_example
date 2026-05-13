@@ -1,4 +1,4 @@
-package io.github.flinkexample.frauddetection.model
+package io.github.flinkexample.scenario.frauddetection.model
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule

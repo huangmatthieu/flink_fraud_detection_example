@@ -1,4 +1,4 @@
-package io.github.flinkexample.frauddetection.model
+package io.github.flinkexample.scenario.frauddetection.model
 
 case class Transaction(
                  userId: String,

@@ -14,21 +14,33 @@
 
 ```
 src/
-├── main/
-│   ├── scala/
-│   │   └── io/github/flinkexample/frauddetection/ 
-│   │       ├── model
-│   │       │   ├── Alert.scala
-│   │       │   └── Transaction.scala
-│   │       ├── sink
-│   │       │   └── KafkaSinkUtils.scala
-│   │       ├── source
-│   │       │   └── KafkaSourceUtils.scala
-│   │       ├── transformations
-│   │       │   └── FrandDetection.scala
-│   │       └── FraudDetectionMain.scala
-├── pom.xml
-└── README.md  
+└── main/
+    └── scala/
+        └── io/github/flinkexample/ 
+            ├── io/
+            │   ├── sink/
+            │   │   └── KafkaSinkUtils.scala
+            │   └── source/
+            │       └── KafkaSourceUtils.scala 
+            ├── scenario/   
+            │   ├── frauddetection/
+            │   │   ├── model/
+            │   │   │   ├── Alert.scala
+            │   │   │   └── Transaction.scala
+            │   │   ├── transformations
+            │   │   │   └── FraudDetector.scala
+            │   │   └── FraudDetectionMain.scala
+            │   └── topmovie/
+            │       ├── model/
+            │       │   ├── MovieCount.scala
+            │       │   └── ViewEvent.scala
+            │       ├── transformations/
+            │       │   ├── CountAgg.scala
+            │       │   ├── TopNMovies.scala
+            │       │   └── WindowResultFunction.scala
+            │       └── TopMovieMain.scala
+            └── utils/
+                └── JsonParser.scala
 ```
 
 ### Flink Fraud Detection (Scala)
@@ -43,9 +55,7 @@ This project demonstrates how to:
 - Detect fraud patterns in real time
 - (Optional) Send alerts to Kafka
 
----
-
-## Use Case
+### Use Case
 
 We detect suspicious activity when:
 
@@ -54,6 +64,18 @@ We detect suspicious activity when:
 >A user performs **transactions that occur too far in a short time window**
 
 This is implemented using **stateful stream processing**, not batch.
+
+
+---
+### Flink Top Movie (Scala)
+
+A simple real-time application that simulate top N Trending Movies Example.
+
+This project simulate a Netflix-style "Trending Now" feature:
+- Comsume movie view events
+- Aggregate views in real time
+- Compute the top N trending movies
+
 
 ---
 
